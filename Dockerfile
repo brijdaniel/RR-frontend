@@ -18,8 +18,13 @@ WORKDIR /usr/src/app/app
 # Install project dependencies
 RUN npm install
 
-# Expose port 8081 for Metro Bundler
-EXPOSE 8081
+# Install Expo globally (optional)
+RUN npm install expo
+RUN npm install -g expo-cli
+RUN npm install --global @expo/ngrok@^4.1.0
 
-# Start the React Native Metro Bundler
-CMD ["npm", "start"]
+# Expose ports for Expo
+EXPOSE 19000 19001 19002
+
+# Start Expo CLI
+CMD ["npx", "expo", "start", "--tunnel"]
