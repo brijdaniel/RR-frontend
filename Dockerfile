@@ -22,9 +22,10 @@ RUN npm install
 RUN npm install expo
 RUN npm install -g expo-cli
 RUN npm install --global @expo/ngrok@^4.1.0
+RUN npx expo install react-dom react-native-web @expo/metro-runtime
 
 # Expose ports for Expo
-EXPOSE 19000 19001 19002
+EXPOSE 8081 19000 19001 19002
 
 # Start Expo CLI
 CMD ["npx", "expo", "start", "--tunnel"]
